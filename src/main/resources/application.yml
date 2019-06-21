@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/appdb
+    username: pguser
+    password: pguser
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
