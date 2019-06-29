@@ -7,4 +7,8 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
+  flyway:
+    url: jdbc:h2:mem:db
+    user: testuser
+    password: testpassword
