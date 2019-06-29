@@ -2,17 +2,17 @@ server:
   port: 3001
 spring:
   datasource:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:yunar;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/appdb
     username: testuser
     password: testpassword
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: none
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
   flyway:
-    url: jdbc:h2:mem:yunar;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    url: jdbc:postgresql://localhost/appdb
     user: testuser
     password: testpassword
-    schemas: PUBLIC
-    baseline-on-migrate: true

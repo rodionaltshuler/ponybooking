@@ -12,29 +12,11 @@
 
 `./gradlew bootRun`
 
-This will start server on default port (http://localhost:8080), you can see endpoints available with
-`http://localhost:8080/swagger-ui.html`
-
-#### 3. Save and retrieve data
-
-3.1 Save:
-
-`curl -X POST \
-  http://localhost:8080/save \
-  -H 'Content-Type: application/json' \
-  -d '{
-"timestamp": 10001,
-"value": "value1"
-}'`
-
-3.2 Retrieve
-
-`curl -X GET 'http://localhost:8080?from=10000&to=10010'
-`
-
-#### If you want just run build with tests, use:
-
-`./gradlew build`
+This will start server on http://localhost:3001, you can see endpoints available with
+`http://localhost:3001/swagger-ui.html`
 
 
- 
+#### 3. Tests
+
+Only integration tests for concurrent pony booking is included. You need to run Postgres container first (see 1) 
+to run these tests.
