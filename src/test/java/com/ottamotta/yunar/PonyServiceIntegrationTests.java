@@ -10,7 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -45,7 +44,7 @@ public class PonyServiceIntegrationTests {
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
-        Assert.assertTrue("1 booking expected, but " + bookedPonies.size() + " occured", bookedPonies.size() == 1);
+        Assert.assertEquals("1 booking expected, but " + bookedPonies.size() + " occured", 1, bookedPonies.size());
 
     }
 

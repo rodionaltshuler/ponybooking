@@ -4,12 +4,9 @@ import com.ottamotta.yunar.exceptions.CantReturnPonyException;
 import com.ottamotta.yunar.exceptions.NoPonyAvailableException;
 import com.ottamotta.yunar.exceptions.PonyDoesntExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.LockModeType;
 
 @Service
 public class PonyService {
@@ -21,12 +18,10 @@ public class PonyService {
         this.repository = repository;
     }
 
-    @Lock(LockModeType.PESSIMISTIC_READ)
     public Pony getStatus(String id) {
         return repository.findById(id).orElseThrow(PonyDoesntExistsException::new);
     }
 
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public Pony bookPony(String id) {
 
@@ -41,7 +36,6 @@ public class PonyService {
         throw new NoPonyAvailableException();
     }
 
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public Pony returnPony(String id) {
         Pony pony = repository.findById(id).orElseThrow(PonyDoesntExistsException::new);
