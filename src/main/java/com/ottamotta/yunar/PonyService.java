@@ -22,7 +22,7 @@ public class PonyService {
         return repository.findById(id).orElseThrow(PonyDoesntExistsException::new);
     }
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public Pony bookPony(String id) {
 
         Pony pony = repository.findById(id).orElseThrow(PonyDoesntExistsException::new);
@@ -36,7 +36,7 @@ public class PonyService {
         throw new NoPonyAvailableException();
     }
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public Pony returnPony(String id) {
         Pony pony = repository.findById(id).orElseThrow(PonyDoesntExistsException::new);
 
