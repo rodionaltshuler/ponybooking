@@ -23,7 +23,7 @@ class PonyServiceIntegrationTests {
     lateinit var ponyService: PonyService
 
     @Test
-    fun ponyBookedOnceWithConcurrentAccess() {
+    fun `pony booked only once with concurrent access`() {
 
         val bookResults = IntStream.range(0, 100)
                 .parallel()
